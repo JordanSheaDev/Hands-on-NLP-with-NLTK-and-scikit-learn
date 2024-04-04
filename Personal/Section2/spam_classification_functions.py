@@ -4,13 +4,8 @@ from collections import Counter
 from random import shuffle
 import nltk
 
-# Update nltk
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('stopwords')
 
-
-class SpamTrainer:
+class SpamLoader:
     '''
         Class to train a NTLK NaiveBayes Model on Spam filtering
         stop_words: A list of common words without meaning to remove
@@ -27,6 +22,12 @@ class SpamTrainer:
         self.uncommon_amount = uncommon_amount
         self.all_examples = None
         self.features = None
+
+    def update(self):
+        '''Check if updates are needed'''
+        nltk.download('punkt')
+        nltk.download('wordnet')
+        nltk.download('stopwords')
 
     def get_stopwords(self):
         '''Returns english stopwords from nltk'''
